@@ -1,7 +1,9 @@
+import java.util.*;
+import java.io.*;
 public class Merge{
   /*sort the array from least to greatest value. This is a wrapper function*/
   public static void mergesort(int[]data){
-    margesortH(data, 0, data.length - 1);
+    mergesortH(data, 0, data.length - 1);
   }
 
   private static void mergesortH(int[] data, int lo, int hi){ //helper function
@@ -9,8 +11,8 @@ public class Merge{
       return;
     }
     int mid = (lo + hi)/2;
-    int leftLength = mid - left + 1;
-    int rightLength = right - mid;
+    int leftLength = mid - lo + 1;
+    int rightLength = hi - mid;
     int[] L = new int[leftLength];
     int[] R = new int[rightLength];
     //copy over values
@@ -22,8 +24,8 @@ public class Merge{
       //right array
       R[i]=data[mid+i];
     }
-    mergesort(data, lo, mid); //split in half and mergesort left side
-    mergesort(data, mid+1, hi); //split in half and mergesort right side
+    mergesortH(data, lo, mid); //split in half and mergesort left side
+    mergesortH(data, mid+1, hi); //split in half and mergesort right side
     merge(data, L, R, mid); //merge them back together
   }
   /*
@@ -72,7 +74,7 @@ public class Merge{
 
     //if right not done (length greater than left)
     while(r < R.length){
-      data[i] = Right[r];
+      data[i] = R[r];
       i++;
       r++;
     }
