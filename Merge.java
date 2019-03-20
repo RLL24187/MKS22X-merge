@@ -11,10 +11,10 @@ public class Merge{
       return;
     }
     int mid = data.length/2;
-    int leftLength = mid;
-    int rightLength = data.length - mid;
-    int[] L = new int[leftLength];
-    int[] R = new int[rightLength];
+    //int leftLength = mid;
+    //int rightLength = data.length - mid;
+    int[] L = new int[mid];
+    int[] R = new int[data.length - mid];
     //copy over values
     for (int i = 0; i < L.length; i++){
       //left array
