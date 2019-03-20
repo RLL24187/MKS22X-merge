@@ -10,9 +10,9 @@ public class Merge{
     if (lo >= hi){ //went through all the indices
       return;
     }
-    int mid = (lo + hi)/2;
-    int leftLength = mid - lo + 1;
-    int rightLength = hi - mid;
+    int mid = data.length/2;
+    int leftLength = mid;
+    int rightLength = data.length - mid;
     int[] L = new int[leftLength];
     int[] R = new int[rightLength];
     //copy over values
@@ -24,8 +24,8 @@ public class Merge{
       //right array
       R[i]=data[mid+i];
     }
-    mergesortH(data, lo, mid); //split in half and mergesort left side
-    mergesortH(data, mid+1, hi); //split in half and mergesort right side
+    mergesortH(L, 0, L.length - 1); //split in half and mergesort left side
+    mergesortH(R, 0, R.length - 1); //split in half and mergesort right side
     merge(data, L, R, mid); //merge them back together
   }
   /*
@@ -64,14 +64,12 @@ public class Merge{
       }
       i++;
     }
-
     //if left not done (length was greater than right)
     while(l < L.length){
       data[i] = L[l];
       i++;
       l++;
     }
-
     //if right not done (length greater than left)
     while(r < R.length){
       data[i] = R[r];
