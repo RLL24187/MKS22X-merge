@@ -45,21 +45,41 @@ public class Merge{
     int[] R = new int[rightLength];
     */
     //store indices
-    int i = 0;
-    int l = 0;
-    int r = 0;
+    int i = 0; //data index
+    int l = 0; //left index
+    int r = 0; //right index
     //loop thru the elements in one side and elements on the other and move it into the right place
-    for (int r = 0; r < rightLength; r++){
-      for (int l = 0; l < leftLength; l++){
-        if (L[l] < R[r]){
-
-        }
+    while(l < L.length && r < R.length){
+      // if left is less than or equal to right
+      if (L[l] <= R[r]){
+        data[i] = L[l];
+        l++;
       }
+      // if right is less than left
+      else{
+        data[i] = R[r];
+        r++;
+      }
+      i++;
+    }
+
+    //if left not done (length was greater than right)
+    while(l < L.length){
+      data[i] = L[l];
+      i++;
+      l++;
+    }
+
+    //if right not done (length greater than left)
+    while(r < R.length){
+      data[i] = Right[r];
+      i++;
+      r++;
     }
   }
   //If you want to make it faster:
   //Have your mergesort take both the data and temp arrays. Mergesort the temp, and merge into the original!
   //e.g.
-    private static void mergesort(int[]data, int[]temp, int lo, int hi){}
+  //  private static void mergesort(int[]data, int[]temp, int lo, int hi){}
 //Pre-allocate a temp array in your mergesort wrapper method, and copy the data into it.
 }
